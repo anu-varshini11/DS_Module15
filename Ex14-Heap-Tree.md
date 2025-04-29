@@ -1,65 +1,48 @@
-# Ex13 Expression Tree
+# Ex14 Heap Tree
 ## DATE:
 ## AIM:
-To write a C function to construct an Expression Tree for the given Postfix Expression and display the output in the format of In-order ,Pre-order and Post-order traversal.
+To write a C function to delete an element in a Heap Tree.
 
 ## Algorithm
 1. Start 
-2. Print node data in preorder then traverse left then right 
-3. Traverse left in inorder then print node data then traverse right 
-4. Traverse left in postorder then traverse right then print node data 
-5. Recursive approach is used for all three traversal methods 
-6. Functions handle each tree node using tree->d, tree->l, tree->r 
-7. End  
+2. Find the index of the element num in the array. 
+3. Swap the element to be deleted with the last element in the array. 
+4. Decrease the array size (size) by 1. 
+5. Start heapifying from the last non-leaf node (index size/2 - 1). 
+6. Call heapify() to restore the heap property for each node. 
+7. End
 
 ## Program:
 ```
 /*
-Program to construct an Expression Tree for the given Postfix Expression and display the output in the format of In-order ,Pre-order and Post-order traversal.
+Program to delete an element in a Heap Tree
 Developed by: ANU VARSHINI M B
-RegisterNumber: 212223240010
+RegisterNumber:  212223240010
 */
-struct n { 
-char d; 
-struct n *l; 
-struct n *r; 
-};*/ 
-void preOrder(struct n *tree) 
+void deleteRoot(int array[], int num) 
 { 
-if(tree) 
+int i; 
+for(i=0;i<size;i++) 
 { 
-printf("%c",tree->d); 
-preOrder(tree->l); 
-preOrder(tree->r); 
+if(num==array[i]) 
+{ 
+break; 
 } 
 } 
-void inOrder(struct n *tree) 
+swap(&array[i],&array[size-1]); 
+size-=1; 
+for(i=size/2-1;i>=0;i--) 
 { 
-if(tree) 
-{ 
-inOrder(tree->l); 
-printf("%c",tree->d); 
-inOrder(tree->r); 
+heapify(array,size,i); 
 } 
-} 
-void postOrder(struct n *tree) 
-  
-  
-{ 
-if(tree) 
-{ 
-postOrder(tree->l); 
-postOrder(tree->r); 
-printf("%c",tree->d); 
-} 
-} 
+}
 ```
 
 ## Output:
 
-![image](https://github.com/user-attachments/assets/e33e193e-15c8-4bd7-b7f4-153db4525db5)
+![image](https://github.com/user-attachments/assets/6f7c138e-f362-4f98-b868-cb5eecaa33a7)
 
 
 ## Result:
 
-Thus, the C program to display the Expression Tree in the format of In-order ,Pre-order and Post-order traversal.
+Thus, the function to delete an element in a Heap Tree is implemented successfully.
